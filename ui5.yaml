@@ -1,0 +1,12 @@
+specVersion: "4.0"
+metadata:
+  name: fiori_basic_develop
+type: application
+framework:
+  name: OpenUI5
+  version: "1.147.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_fiori_3
+      optional: true
