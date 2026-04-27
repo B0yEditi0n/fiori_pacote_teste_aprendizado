@@ -1,11 +1,8 @@
 {
 "_version": "1.84.0",
- 
     "start_url": "index.html",
- 
     "sap.app": {
         "id": "sap.fiori.appName",
         "type": "application"
-
     }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "fiori_basic_develop",
+  "name": "first_exemple_fiori_nav_pages",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@ui5/cli": "^4.0.51"
+    "@ui5/cli": "^4.0.51",
+    "@ui5/cli-monorepo": "github:ui5/cli",
+    "npm": "^11.13.0"
   },
   "devDependencies": {
     "@openui5/themelib_sap_horizon": "^1.147.0"

@@ -1,0 +1,8 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<App id="app">
+		<pages>
+            <mvc:XMLView id="initialPages" viewName="ui5.walkthrough.view.First"/>
+            <mvc:XMLView id="detailPageId" viewName="ui5.walkthrough.view.second"/>
+		</pages>
+	</App>
+</mvc:View>

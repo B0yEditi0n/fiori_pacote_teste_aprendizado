@@ -1,9 +1,0 @@
-<mvc:View
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    controllerName="ui5.walkthrough.controller.App"
-    
->
-    <Button text="{traducao>pressBtn}" press="onPressButton()"></Button>
-    <Input value="{/recipient/name}"/> 
-</mvc:View>
