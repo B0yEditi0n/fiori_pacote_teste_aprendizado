@@ -1,0 +1,16 @@
+<mvc:View
+	controllerName="dhconsulting.fiori.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<Page title="Titulo">
+			<content>
+				<VBox>
+					<Image src="./assesents/dh-logo.jpeg" width="30em"></Image>
+					<Image src="{img>/imgLogo}" width="100em"></Image>
+				</VBox>
+			</content>
+		</Page>
+	</App>
+</mvc:View>
