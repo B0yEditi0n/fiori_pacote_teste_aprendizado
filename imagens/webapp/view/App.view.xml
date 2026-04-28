@@ -7,8 +7,17 @@
 		<Page title="Titulo">
 			<content>
 				<VBox>
-					<Image src="./assesents/dh-logo.jpeg" width="30em"></Image>
+					<Image src="./assesents/dh-logo.jpeg" width="30em"
+						press='.onPressImage'
+						load='.onLoadImage'
+						error='.onErrorImage'
+						tap='.onTapImage'
+
+					></Image>
 					<Image src="{img>/imgLogo}" width="100em"></Image>
+					<!-- Teste de  inclusão dinamica -->
+					<HBox id="hbox_content"></HBox>
+					<!-- Teste de  inclusão dinamica -->
 				</VBox>
 			</content>
 		</Page>
