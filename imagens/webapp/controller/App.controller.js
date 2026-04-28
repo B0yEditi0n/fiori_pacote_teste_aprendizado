@@ -18,8 +18,10 @@ sap.ui.define([
 
             // Teste de Inclusão Dinamica
             const oImage = new Image();
-            const oHbox = this.byId("hbox_content");
             oImage.setSrc(sap.ui.require.toUrl("dhconsulting/fiori/assesents/dhlogoAlternativa.png"))
+            oImage.setWidth("100rem")
+            
+            const oHbox = this.byId("hbox_content");
             oHbox.addItem(oImage)
         },
 
