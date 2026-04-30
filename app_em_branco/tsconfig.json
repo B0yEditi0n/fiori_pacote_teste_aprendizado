@@ -4,11 +4,11 @@
         "allowJs": true,
         "strict": true,
         "strictPropertyInitialization": false,
-        "rootDir": "webapp",
+        "rootDir": "./webapp",
         "types": ["@sapui5/ts-types-esm"],
         "paths": {
             "ui5/walkthrough/*": ["./webapp/*"]
         }
     },
-    "include": ["webapp/**/*"]
+    "include": ["./webapp/**/*"]
 }

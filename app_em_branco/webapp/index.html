@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Template</title>
     <script 
             id="sap-ui-bootstrap"
             src="/resources/sap-ui-core.js"
@@ -11,11 +11,18 @@
             data-sap-ui-theme="sap_fiori_3"
             data-sap-ui-libs="sap.m"
             data-sap-ui-async="true"
-            data-sap-ui-on-init="module:dhconsulting/fiori/index"
+            data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
             data-sap-ui-resource-roots='{
-                "dhconsulting/fiori": "./"
+                "dhconsulting.fiori": "./"
             }'>
 	</script>
 </head>
-    <body class="sapUiBody" id="content" role="application"></body>
+    <body class="sapUiBody" id="content" role="application">
+        <div 
+            data-sap-ui-component 
+            data-name="dhconsulting.fiori" 
+            data-id="container" 
+            data-settings='{"id" : "contentRoot"}'>
+        </div>
+    </body>
 </html>

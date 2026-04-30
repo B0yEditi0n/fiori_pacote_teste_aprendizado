@@ -4,6 +4,10 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<App>
-		<Page title="Titulo"></Page>
+		<Page title="Titulo">
+			<content>
+				<Text text="Exemplo" />
+			</content>
+		</Page>
 	</App>
 </mvc:View>

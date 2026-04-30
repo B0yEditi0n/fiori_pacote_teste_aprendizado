@@ -2,7 +2,40 @@
 "_version": "1.84.0",
     "start_url": "index.html",
     "sap.app": {
-        "id": "sap.fiori.emBlank",
+        "id": "dhconsulting.fiori",
         "type": "application"
+    },
+    "sap.ui5": { 
+
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewName": "dhconsulting.fiori.view",
+                "type": "XML",
+                "id": "app",
+                "async": true,
+                "controlAggregation": "pages"
+            },
+            "routes":[
+                {
+                    "name": "appInit",
+                    "pattern": "",
+                    "target": "home"
+                }
+            ],
+
+            "targets": {
+                "home":{
+                    "id": "App",
+                    "name": "App"
+                }
+            }
+        },
+
+        "rootView": {
+            "viewName": "dhconsulting.fiori.view.App",
+            "type": "XML",
+            "id": "App"
+        }
     }
 }
