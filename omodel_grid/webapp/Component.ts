@@ -20,7 +20,7 @@ export default class Component extends UIComponent {
                 "CountSweets": "2",
                 "SweetsSupplier": [
                     {
-                        "ID": 0,
+                        "ID": "0",
                         "Name": "Sweet Magic",
                         "Address": {
                             "Street": "Sivarao Street",
@@ -55,7 +55,8 @@ export default class Component extends UIComponent {
                 ]
             })
         );
-
-        this.getRouter().initialize();
+        const oRote = this.getRouter();
+        oRote.initialize();
+        oRote.navTo("RouteMain");
     };
 };

@@ -11,28 +11,30 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "viewPath": "dhconsulting.fiori.view",
-                "controlId": "app",
+                "controlId": "mainApp",
                 "controlAggregation": "pages",
                 "async": true
             },
             "routes": [
                 {
+                    "name": "RouteDetails",
+                    "pattern": "Details/{ID_Detalhe}",
+                    "target": "TargetDetails"
+                },
+                {
                     "name": "RouteMain",
                     "pattern": "",
                     "target": "TargetMain"
-                },
-                {
-                    "name": "RouteDetails",
-                    "pattern": "Details/{supplierId}",
-                    "target": "TargetDetails"
                 }
             ],
             "targets": {
-                "TargetMain": {
-                    "viewName": "App"
-                },
                 "TargetDetails": {
+                    "id": "detail",
                     "viewName": "Details"
+                },
+                "TargetMain": {
+                    "id": "overview_home",
+                    "viewName": "Overview"
                 }
             }
         },
@@ -40,7 +42,7 @@
         "rootView": {
             "viewName": "dhconsulting.fiori.view.App",
             "type": "XML",
-            "id": "App"
+            "id": "mainApp"
         }
     }
 }

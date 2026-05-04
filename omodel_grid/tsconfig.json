@@ -6,7 +6,7 @@
         "strictPropertyInitialization": false,
         "rootDir": "webapp",
         "target": "es2023",
-        "types": ["node", "@types/openui5"],
+        "types": ["@types/openui5"],
         "paths": {
             "ui5/walkthrough/*": ["./webapp/*"]
         }

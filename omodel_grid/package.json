@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "@types/openui5": "^1.147.0",
-    "node": "^24.15.0"
+    "typescript": "^6.0.3",
+    "ui5-middleware-livereload": "^3.3.0",
+    "ui5-middleware-serveframework": "^3.8.0",
+    "ui5-tooling-transpile": "^3.11.0"
   }
 }
