@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="dhconsulting.fiori.controller.Login"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout">
+
+	<App id="login_page">
+        <Page>
+            <VBox 
+            height="100%"
+            width="100%"
+            alignContent="Center"
+            alignItems="Center"
+            justifyContent="Center"
+        
+            >
+                <l:VerticalLayout>
+
+                <Label text="User" labelFor="userInput" />
+                <Input
+                    width="350px"
+                    textAlign="Initial"
+                    id="userInput"
+                    type="Text"
+                    placeholder="Enter User" />
+
+                <HBox height="15px"></HBox>
+
+                <Label text="Password" labelFor="passwordInput" />
+                <Input
+                    width="350px"
+                    textAlign="Initial"
+                    id="passwordInput"
+                    type="Password"
+                    placeholder="Enter password" />
+
+                <HBox height="15px"></HBox>
+
+                <VBox alignItems="Center">
+                    <Button 
+                        text="Sumit User"
+                        press=".onPressLogin"
+                    ></Button>
+                </VBox>
+                </l:VerticalLayout>
+                
+            </VBox>
+        
+        </Page>
+    </App>
+</mvc:View>

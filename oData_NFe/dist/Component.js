@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent"],function(t){"use strict";const n=t.extend("dhconsulting.fiori.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init:function n(){t.prototype.init.call(this);const i=this.getRouter();i.initialize();i.navTo("RouteLoginPage")}});return n});
+//# sourceMappingURL=Component.js.map

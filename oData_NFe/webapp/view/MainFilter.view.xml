@@ -1,0 +1,14 @@
+<mvc:View
+	controllerName="dhconsulting.fiori.controller.MainFilter"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App id="MainFilterPage">
+		<Page>
+			<content>
+
+			<Text text="Filtro Principal"></Text>
+			</content>
+		</Page>		
+    </App>
+</mvc:View>

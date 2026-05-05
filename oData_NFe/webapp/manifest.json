@@ -1,0 +1,56 @@
+{
+"_version": "1.84.0",
+    "start_url": "index.html",
+    "sap.app": {
+        "id": "dhconsulting.fiori",
+        "type": "application",
+        "dataSources": {
+            "OData":{
+                "uri": "https://sap.dhconsulting.com.br/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": { 
+
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "dhconsulting.fiori.view",
+                "viewType": "XML",
+                "controlId": "root_view",
+                "async": true,
+                "controlAggregation": "pages"
+            },
+            "routes":[
+                {
+                    "name": "RouterMainFilter",
+                    "pattern": "SelectTarget",
+                    "target": "TargetMainFilter"
+                },
+                {
+                    "name": "RouteLoginPage",
+                    "pattern": "login",
+                    "target": "TargetLogin"
+                }
+            ],
+
+            "targets": {
+                "TargetMainFilter":{
+                    "id": "MainFilterPage",
+                    "viewName": "MainFilter"
+                },
+                "TargetLogin":{
+                    "id": "LoginPage",
+                    "viewName": "Login"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "dhconsulting.fiori.view.App"
+        }
+    }
+}
