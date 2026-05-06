@@ -1,7 +1,9 @@
 import Control from "sap/ui/core/Control";
 import UIComponent from "sap/ui/core/UIComponent";
 import JSONModel from "sap/ui/model/json/JSONModel";
-import Log from "sap/base/Log";
+
+// Import Model Device
+import { createDeviceModel } from "dhconsulting/fiori/model/model"
 
 /**
  * @namespace dhconsulting.fiori
@@ -23,10 +25,12 @@ export default class Component extends UIComponent {
         //     }
         // }), "auth_nfe")
 
+        createDeviceModel()
+
         const oRoute = this.getRouter();
         oRoute.initialize()
 
         // rota inicial
-        oRoute.navTo("RouteLoginPage")
+        oRoute.navTo("RouteMainPage")
     };
 };

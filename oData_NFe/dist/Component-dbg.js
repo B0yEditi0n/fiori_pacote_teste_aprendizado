@@ -1,6 +1,8 @@
-sap.ui.define(["sap/ui/core/UIComponent"], function (UIComponent) {
+sap.ui.define(["sap/ui/core/UIComponent", "dhconsulting/fiori/model/model"], function (UIComponent, __dhconsulting_fiori_model_model) {
   "use strict";
 
+  // Import Model Device
+  const createDeviceModel = __dhconsulting_fiori_model_model["createDeviceModel"];
   /**
    * @namespace dhconsulting.fiori
    */
@@ -20,11 +22,12 @@ sap.ui.define(["sap/ui/core/UIComponent"], function (UIComponent) {
       //     }
       // }), "auth_nfe")
 
+      createDeviceModel();
       const oRoute = this.getRouter();
       oRoute.initialize();
 
       // rota inicial
-      oRoute.navTo("RouteLoginPage");
+      oRoute.navTo("RouteMainPage");
     }
   });
   ;

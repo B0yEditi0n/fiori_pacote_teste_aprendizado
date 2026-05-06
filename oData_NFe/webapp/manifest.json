@@ -5,16 +5,36 @@
         "id": "dhconsulting.fiori",
         "type": "application",
         "dataSources": {
-            "OData":{
-                "uri": "https://sap.dhconsulting.com.br/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
+            "nfeService":{
+                "uri": "http://local.dhconsulting.com.br:3000/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
                 "type": "OData",
                 "settings": {
-                    "odataVersion": "2.0"
-                }
+                    "odataVersion": "2.0",
+                    "localUri": "/"
+                }                
             }
         }
     },
+    "sap.ui":{
+        "technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+    },
     "sap.ui5": { 
+        "contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+        
+        "models": {
+            "NFe_API":{
+                "dataSource": "nfeService",
+                "settings": {}
+            }
+        },
 
         "routing": {
             "config": {
@@ -27,25 +47,25 @@
             },
             "routes":[
                 {
-                    "name": "RouterMainFilter",
+                    "name": "RouterTableResult",
                     "pattern": "SelectTarget",
-                    "target": "TargetMainFilter"
+                    "target": "TargetTableResult"
                 },
                 {
-                    "name": "RouteLoginPage",
-                    "pattern": "login",
-                    "target": "TargetLogin"
+                    "name": "RouteMainPage",
+                    "pattern": "Main",
+                    "target": "TargetMain"
                 }
             ],
 
             "targets": {
-                "TargetMainFilter":{
-                    "id": "MainFilterPage",
-                    "viewName": "MainFilter"
+                "TargetTableResult":{
+                    "id": "TableResultPage",
+                    "viewName": "TableResult"
                 },
-                "TargetLogin":{
-                    "id": "LoginPage",
-                    "viewName": "Login"
+                "TargetMain":{
+                    "id": "MainID",
+                    "viewName": "Main"
                 }
             }
         },

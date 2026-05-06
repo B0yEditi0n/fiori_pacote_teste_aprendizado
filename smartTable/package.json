@@ -1,0 +1,23 @@
+{
+  "name": "inblanckapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/openui5": "^1.147.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@sapui5/ts-types-esm": "^1.147.1",
+    "ui5-middleware-livereload": "^3.3.0",
+    "ui5-middleware-serveframework": "^3.8.0",
+    "ui5-tooling-transpile": "^3.11.0"
+  }
+}

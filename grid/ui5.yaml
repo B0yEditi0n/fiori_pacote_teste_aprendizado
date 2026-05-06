@@ -1,0 +1,11 @@
+specVersion: "4.0"
+metadata:
+  name: in_blanck_app
+type: application
+framework:
+  name: OpenUI5
+  version: "1.147.1"
+  libraries:
+    - name: sap.m
+    - name: sap.m
+    - name: themelib_sap_fiori_3

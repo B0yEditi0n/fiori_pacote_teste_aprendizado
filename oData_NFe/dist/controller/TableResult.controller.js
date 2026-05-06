@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(n){"use strict";const e=n.extend("webapp.controller.TableResult",{onInit:function n(){},onFiltersChanged:function n(e){const t=this.getView().byId("Main_FiltroID").getConditions()},onBtnSearchPress:function n(){debugger}});return e});
+//# sourceMappingURL=TableResult.controller.js.map

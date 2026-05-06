@@ -1,8 +1,8 @@
 import Controller from "sap/ui/core/mvc/Controller";
 import MessageToast from "sap/m/MessageToast";
 
-Controller.extend("dhconsulting.fiori.controller.App", {
-    onInit() {
+export default class App extends Controller{
+    public onInit(){
         MessageToast.show('Messagem de deu certo')
-    },
-});
+    };
+};

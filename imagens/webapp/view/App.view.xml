@@ -2,7 +2,9 @@
 	controllerName="dhconsulting.fiori.controller.App"
 	displayBlock="true"
 	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	>
 	<App>
 		<Page title="Titulo">
 			<content>
@@ -18,6 +20,23 @@
 					<!-- Teste de  inclusão dinamica -->
 					<HBox id="hbox_content"></HBox>
 					<!-- Teste de  inclusão dinamica -->
+
+					<!-- ###################### -->
+					<!-- # Utilização de Grid # -->
+					<!-- ###################### -->
+					<l:VerticalLayout
+							width="100%"
+							class="gridWrapper">
+						<l:Grid
+								containerQuery="true"
+								hSpacing="0">
+							<core:HTML content="&lt;div class=&quot;exampleDiv&quot; /&gt;" />
+							<core:HTML content="&lt;div class=&quot;exampleDiv contrastColor&quot; /&gt;" />
+							<core:HTML content="&lt;div class=&quot;exampleDiv&quot; /&gt;" />
+							<core:HTML content="&lt;div class=&quot;exampleDiv contrastColor&quot; /&gt;" />
+						</l:Grid>
+					</l:VerticalLayout>
+
 				</VBox>
 			</content>
 		</Page>

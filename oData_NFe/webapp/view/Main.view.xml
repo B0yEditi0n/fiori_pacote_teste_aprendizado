@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="dhconsulting.fiori.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    
+    xmlns:f="sap.f"
+	xmlns:mdc="sap.ui.mdc"
+    >
+
+	<App id="MainID">
+        <Page title="Gestão Fiscal - Monitor">
+            <VBox 
+            height="100%"
+            width="100%"
+            alignContent="Center"
+            alignItems="Center"
+            justifyContent="Center"
+        
+            >
+                <mdc:FilterBar
+					id="Main_FiltroID"
+					p13nMode="Item,Value"
+					filtersChanged=".onFiltersChanged"
+					search=".onBtnSearchPress"
+
+				>
+				
+					<mdc:filterItems>
+
+						<!-- Docnum -->
+						<mdc:FilterField
+							id="Main_FiltroID--filter--bukrs"
+							propertyKey="bukrs"
+							operators="EQ"
+							label="Empresa"
+							dataType="sap.ui.model.type.String"
+                            dataTypeConstraints='\{"maxLength": 4\}'
+							maxConditions="1"
+						/>
+
+						<!-- Filial -->
+						<mdc:FilterField
+							id="Main_FiltroID--filter--branch"
+							propertyKey="branch"
+							operators="EQ"
+							label="Filial"
+							dataType="sap.ui.model.type.String"
+                            dataTypeConstraints='\{"maxLength": 4\}'
+                            maxConditions="1"
+						/>
+						
+						<!-- Data Referencia -->
+						<mdc:FilterField
+							id="Main_FiltroID--filter--pstdatI"
+							propertyKey="pstdat"
+							operators="EQ,BT,GT,LT,SPECIFICMONTH,DATETOYEAR,THISMONTH,LASTMONTH"
+							label="Data Referência"
+							dataType="sap.ui.model.type.Date"
+                            dataTypeConstraints='\{"maxLength": 4\}'
+                            maxConditions="1"
+						/>
+						<!-- Docnum -->
+						<mdc:FilterField
+							id="Main_docnumID"
+							propertyKey="docnum"
+							operators="EQ"
+							label="Numero do Documento (Docnum)"
+							dataType="sap.ui.model.type.String"
+							/>
+			
+					</mdc:filterItems>
+				</mdc:FilterBar>
+
+            </VBox>
+        
+        </Page>
+    </App>
+</mvc:View>

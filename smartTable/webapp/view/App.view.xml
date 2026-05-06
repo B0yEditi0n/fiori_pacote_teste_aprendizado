@@ -1,0 +1,12 @@
+<mvc:View
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+
+	height="100%"
+	>
+	<App>
+		<Page title="Smart Table">
+		</Page>
+	</App>
+</mvc:View>

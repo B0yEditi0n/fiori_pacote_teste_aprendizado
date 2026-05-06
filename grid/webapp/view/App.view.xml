@@ -1,0 +1,33 @@
+<mvc:View
+	controllerName="dhconsulting.fiori.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout">
+
+	<App>
+		<Page title="Grid Control">
+			<content>
+				<!--##################-->
+				<!--# Teste de Grid  #-->
+				<!--##################-->
+
+				<!-- <layout:VerticalLayout
+					width="100%"
+					class="gridWrapper"> -->
+					<layout:Grid 
+						class="sapUiSmallMarginTop"
+						defaultSpan="L4 M6 S12"
+					>
+						<core:HTML content="&lt;div style='background-color: blue; height: 50px; color: white;'&gt;Div 4&lt;/div&gt;" />
+						<core:HTML content="&lt;div style='background-color: blue; height: 50px; color: white;'&gt;Div 4&lt;/div&gt;" />
+						<core:HTML content="&lt;div style='background-color: blue; height: 50px; color: white;'&gt;Div 4&lt;/div&gt;" />
+					</layout:Grid>
+				<!-- </layout:VerticalLayout> -->
+
+			</content>
+		</Page>
+	</App>
+</mvc:View>

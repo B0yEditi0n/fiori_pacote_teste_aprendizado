@@ -8,7 +8,7 @@
         "rootDir": "./webapp",
         "types": ["@types/openui5"],
         "paths": {
-            "ui5/walkthrough/*": ["./webapp/*"]
+            "dhconsulting/fiori/*": ["./webapp/*"]
         }
     },
     "include": ["./webapp/**/*"]

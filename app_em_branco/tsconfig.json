@@ -6,9 +6,9 @@
         "strict": true,
         "strictPropertyInitialization": false,
         "rootDir": "./webapp",
-        "types": ["@types/openui5"],
+        "types": ["@sapui5/ts-types-esm"],
         "paths": {
-            "ui5/walkthrough/*": ["./webapp/*"]
+            "dhconsulting/fiori*": ["./webapp/*"]
         }
     },
     "include": ["./webapp/**/*"]

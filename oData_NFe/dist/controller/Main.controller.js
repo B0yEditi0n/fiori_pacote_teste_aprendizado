@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(t){"use strict";const e=t.extend("webapp.controller.Main",{onInit:function t(){},onPressLogin:function t(e){const n=this.getView()?.getModel("NFe_API")},onBtnSearchPress:function t(e){const n=this.getView().byId("Main_FiltroID");const i=this.getView().byId("Main_FiltroID").getFilterItems();const o=[];for(let t=0;t<i.length;t++){const e=i[t];o.push(JSON.stringify(e.getConditions(),"\t",4));this.getView().getModel()}debugger}});return e});
+//# sourceMappingURL=Main.controller.js.map
