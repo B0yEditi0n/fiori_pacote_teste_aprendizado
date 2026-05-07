@@ -6,10 +6,10 @@
         "type": "application",
         "dataSources": {
             "nfeService":{
-                "uri": "http://local.dhconsulting.com.br:3000/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
+                "uri": "http://local.dhconsulting.com.br:3000/sap/opu/odata4/sap/zjsl_b_nfdoc/srvd_a2x/sap/zjsl_s_nfdoc/0001/",
                 "type": "OData",
                 "settings": {
-                    "odataVersion": "2.0",
+                    "odataVersion": "4.0",
                     "localUri": "/"
                 }                
             }
@@ -28,6 +28,9 @@
 			"compact": true,
 			"cozy": true
 		},
+        "dependencies": {
+            "libs": { "sap.ui.mdc": {} }
+        },
         
         "models": {
             "NFe_API":{
@@ -45,6 +48,7 @@
                 "async": true,
                 "controlAggregation": "pages"
             },
+            
             "routes":[
                 {
                     "name": "RouterTableResult",
