@@ -24,7 +24,12 @@ const server = Deno.serve({
       "sap-language", 
       "x-sap-cp-session-timeout", 
       "sap-cancel-on-close",
-      "maxdataserviceversion"
+      "maxdataserviceversion",
+
+      // Data response
+      "mime-version",
+      "odata-maxversion",
+      "odata-version"
     ]
 
     if (req.method === "OPTIONS") {

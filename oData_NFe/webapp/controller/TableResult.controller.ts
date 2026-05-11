@@ -1,5 +1,5 @@
 import Controller from "sap/ui/core/mvc/Controller";
-import ODataModel from "sap/ui/model/odata/v2/ODataModel"
+import ODataModel from "sap/ui/model/odata/v4/ODataModel"
 import Model from "sap/ui/model/Model";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import FilterBar from "sap/ui/mdc/FilterBar"
@@ -17,10 +17,13 @@ import FilterBar from "sap/ui/mdc/FilterBar"
 
 export default class TableResult extends Controller{
     onInit() {
-
+        const oModelFilter = (this.getOwnerComponent()!.getModel("FILTER") as any ).oData.then((data: any)=>
+            console.log(data)
+        );
+        
     };
     onFiltersChanged(oEvent: Event){
-        const oConditions = (this.getView()!.byId("Main_FiltroID") as FilterBar).getConditions();
+        // const oConditions = (this.getView()!.byId("Main_FiltroID") as FilterBar).getConditions();
     };
     onBtnSearchPress(){
         debugger

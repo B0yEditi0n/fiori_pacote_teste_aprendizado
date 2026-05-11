@@ -10,7 +10,7 @@
     >
 
 	<App id="MainID">
-        <Page title="Gestão Fiscal - Monitor">
+        <Page title="&#9;THOR - SUITE FISCAL">
 		<content>
 			<HBox width="100%" alignContent="Center" justifyContent="Center" height="100%">
 				<VBox justifyContent="Center" alignItems="Center" width="80%">
@@ -25,7 +25,7 @@
 							<!-- Docnum -->
 							<mdc:FilterField
 								id="Main_FiltroID--filter--bukrs"
-								propertyKey="bukrs"
+								propertyKey="CompanyCode"
 								operators="EQ"
 								label="Empresa"
 								dataType="sap.ui.model.type.String"
@@ -37,7 +37,7 @@
 							<!-- Filial -->
 							<mdc:FilterField
 								id="Main_FiltroID--filter--branch"
-								propertyKey="branch"
+								propertyKey="BusinessPlace"
 								operators="EQ"
 								label="Filial"
 								dataType="sap.ui.model.type.String"
@@ -48,7 +48,7 @@
 							<!-- Data Referencia -->
 							<mdc:FilterField
 								id="Main_FiltroID--filter--pstdatI"
-								propertyKey="pstdat"
+								propertyKey="BR_NFAuthenticationDate"
 								operators="EQ,BT,SPECIFICMONTHINYEAR,THISMONTH,LASTMONTH"
 								label="Data Referência"
 								dataType="sap.ui.model.type.Date"
@@ -58,7 +58,7 @@
 							<!-- Docnum -->
 							<mdc:FilterField
 								id="Main_docnumID"
-								propertyKey="docnum"
+								propertyKey="BR_NotaFiscal"
 								label="Nº do Documento"
 								dataType="sap.ui.model.type.String"
 								dataTypeConstraints='{"maxLength": 10}'
