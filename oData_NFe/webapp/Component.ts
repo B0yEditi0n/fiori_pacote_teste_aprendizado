@@ -17,14 +17,6 @@ export default class Component extends UIComponent {
     public init(): void{
         super.init();
 
-        // // Autenticação (Temporario)
-        // this.setModel(new JSONModel({
-        //     serviceUrl: "https://sap.dhconsulting.com.br/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
-        //     serviceUrlParams:{
-        //         Authorization: "Basic Sk9BQjpEaDIwMjZAQEBA"                
-        //     }
-        // }), "auth_nfe")
-
         createDeviceModel()
 
         const oRoute = this.getRouter();

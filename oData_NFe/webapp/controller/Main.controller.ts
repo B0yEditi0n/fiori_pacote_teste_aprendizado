@@ -21,8 +21,7 @@ import ODataPropertyBinding from "sap/ui/model/odata/v4/ODataPropertyBinding";
 import { getFilterData } from "dhconsulting/fiori/model/model"
 
 export default class Main extends Controller{
-    onInit() {
-    };
+    onInit() { };
 
     onPressLogin(oEvent: Event){
         const oModelSapUi5 = this.getView()?.getModel("NFe_API")
@@ -67,30 +66,34 @@ export default class Main extends Controller{
         }
         
         const oData = this.getView()?.getModel("NFe_API") as ODataModel;
-        const oContextBinding = oData.bindContext("/Doc", /*oContext*/ undefined, {$$updateGroupId : "mainFilterNfe"});
+        // const oContextBinding = oData.bindContext("/Doc", /*oContext*/ undefined, {$$updateGroupId : "mainFilterNfe"});
 
-        // const oBindList = oData.bindList("Note", oContextBinding.getBoundContext());
-        const oBindList = oData.bindList(
-            '/Doc',                                     // PATH
-            new Context(oData, oData.getServiceUrl()),  // Context
-            [],                                         // Sort
-            sParansCond,                                // Filters
-            // Parans
-            {
-                // Não tem documentação (achamos debugando)
-                // tem que ser server pois ele valida, mas pede você passar
-                "$$operationMode": "Server"   
-            }
-        )
+        // // const oBindList = oData.bindList("Note", oContextBinding.getBoundContext());
+        // const oBindList = oData.bindList(
+        //     '/Doc',                                     // PATH
+        //     new Context(oData, oData.getServiceUrl()),  // Context
+        //     [],                                         // Sort
+        //     sParansCond,                                // Filters
+        //     // Parans
+        //     {
+        //         // Não tem documentação (achamos debugando)
+        //         // tem que ser server pois ele valida, mas pede você passar
+        //         "$$operationMode": "Server"   
+        //     }
+        // )
 
         //
         // TESTE DO FETCH
         //
-        this.getOwnerComponent()?.setModel(new JSONModel(getFilterData(oData.getServiceUrl(), rgCondFilter)), "FILTER")
-        UIComponent.getRouterFor(this).navTo("RouterTableResult")
+
+        const oDataFetchApi = getFilterData(oData.getServiceUrl(), rgCondFilter).then(
+            (data: any)=>{
+                this.getOwnerComponent()?.setModel(new JSONModel(data), "TABLE_RESULT");
+                UIComponent.getRouterFor(this).navTo("RouterTableResult")
+            }
+        )        
+        // 
         
-
-
     };
 
 };

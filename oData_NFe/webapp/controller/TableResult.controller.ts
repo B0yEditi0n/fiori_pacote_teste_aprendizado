@@ -3,6 +3,10 @@ import ODataModel from "sap/ui/model/odata/v4/ODataModel"
 import Model from "sap/ui/model/Model";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import FilterBar from "sap/ui/mdc/FilterBar"
+import Log from "sap/base/Log";
+
+
+import { dinamicTable } from "dhconsulting/fiori/model/model"
 
 // import FilterBar from "sap/ui/mdc/FilterBar"
 
@@ -16,16 +20,27 @@ import FilterBar from "sap/ui/mdc/FilterBar"
 */
 
 export default class TableResult extends Controller{
-    onInit() {
-        const oModelFilter = (this.getOwnerComponent()!.getModel("FILTER") as any ).oData.then((data: any)=>
-            console.log(data)
-        );
+    public onInit(): void {
+        const oModelFilter = this.getOwnerComponent()!.getModel("TABLE_RESULT")
+        if(oModelFilter){
+            console.log(( oModelFilter as any).getData());
+            
+            const oHbox =(this.getView()?.byId("replace_at_tableResult") as any)
+            oHbox.addItem(
+                dinamicTable(
+                    ( oModelFilter as any).getData(), 
+                    "TABLE_RESULT",
+                    "/value/"
+                )
+            )
+
+        }
         
     };
-    onFiltersChanged(oEvent: Event){
+   /* public onFiltersChanged(oEvent: Event): void{
         // const oConditions = (this.getView()!.byId("Main_FiltroID") as FilterBar).getConditions();
     };
-    onBtnSearchPress(){
+    public onBtnSearchPress(): void{
         debugger
         // Faz uma busca
         // const oModel_Nfe = new ODataModel({
@@ -35,5 +50,5 @@ export default class TableResult extends Controller{
         //         "Authorization": (this.getView()?.getModel("loginInputData") as Model),
         //     }
         // })
-    }
+    }*/
 };
