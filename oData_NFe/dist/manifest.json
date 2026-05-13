@@ -9,10 +9,16 @@
 				"uri": "http://local.dhconsulting.com.br:3000/sap/opu/odata4/sap/zjsl_b_nfdoc/srvd_a2x/sap/zjsl_s_nfdoc/0001/",
 				"type": "OData",
 				"settings": {
-					"odataVersion": "2.0",
+					"odataVersion": "4.0",
 					"localUri": "/"
 				}
 			}
+		},
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			]
 		}
 	},
 	"sap.ui": {
@@ -27,6 +33,11 @@
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
+		},
+		"dependencies": {
+			"libs": {
+				"sap.ui.mdc": {}
+			}
 		},
 		"models": {
 			"NFe_API": {

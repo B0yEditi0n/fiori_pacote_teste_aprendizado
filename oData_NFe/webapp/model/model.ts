@@ -2,12 +2,6 @@ import JSONModel from 'sap/ui/model/json/JSONModel'
 import Device from 'sap/ui/Device'
 import Time from 'sap/ui/model/type/Time';
 
-
-import Table from "sap/ui/table/Table";
-import Column from "sap/ui/table/Column";
-import Label from "sap/m/Label";
-import Text from "sap/m/Text";
-
 const createDeviceModel = ()=>{
     const oModel = new JSONModel(Device);
     oModel.setDefaultBindingMode('OneWay');
@@ -67,52 +61,9 @@ const getFilterData = async (sServiceUrl: string, rgCondFilter: tFilter[])=>{
 
     return await oResponse.json();    
 }
-type tyDataResponse = {
-    "@odata.context": string,
-    "@odata.metadataEtag": string,
-    value: [{
-        [key: string | string]: string |number | boolean |Time | null
-    }]
-}
-
-
-
-const dinamicTable = (oData: tyDataResponse, namespace="TABLE_RESULT", path="/value/")=>{
-    /* monta de forma dinamica uma tabela do tipo Grid */
-
-    const oTable = new Table("", {
-        rows: {
-            path: `${namespace}>${path}`
-        },
-        threshold: 15,
-        enableBusyIndicator: true,
-        selectionMode: "MultiToggle"
-    })
-
-    const rgColumns = Object.keys(oData["value"][0])
-    for(let i=0; i<rgColumns.length; i++){
-        const sKeyColumn = rgColumns[i]
-
-        oTable.insertColumn(new Column({
-            autoResizable: true,
-                width: "11rem",
-                label: new Label({ 
-                    text: sKeyColumn
-                }),
-                template: new Text({
-                    text: `{${namespace }>${sKeyColumn}}`,
-                    wrapping: false
-                })
-            }
-
-        ), i)
-    }
-
-    return oTable;
-}
 
 export { 
     createDeviceModel, 
     getFilterData, 
-    fnConvertOFilterToHeader, 
-    dinamicTable }
+    fnConvertOFilterToHeader
+}

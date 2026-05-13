@@ -4,77 +4,94 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:l="sap.ui.layout"
-    
-    xmlns:f="sap.f"
+
 	xmlns:mdc="sap.ui.mdc"
+	xmlns:custom="dhconsulting.fiori.customComponents"
     >
 
 	<App id="MainID">
-        <Page title="Gestão Fiscal - Monitor">
-            <VBox 
-            height="100%"
-            width="100%"
-            alignContent="Center"
-            alignItems="Center"
-            justifyContent="Center"
-        
-            >
-                <mdc:FilterBar
-					id="Main_FiltroID"
-					p13nMode="Item,Value"
-					filtersChanged=".onFiltersChanged"
-					search=".onBtnSearchPress"
+        <Page title="&#9;THOR - SUITE FISCAL">
+		<content>
+			<HBox width="100%" alignContent="Center" justifyContent="Center" height="100%">
+				<VBox justifyContent="Center" alignItems="Center" width="80%">
 
-				>
-				
-					<mdc:filterItems>
-
-						<!-- Docnum -->
-						<mdc:FilterField
-							id="Main_FiltroID--filter--bukrs"
-							propertyKey="bukrs"
-							operators="EQ"
-							label="Empresa"
-							dataType="sap.ui.model.type.String"
-                            dataTypeConstraints='\{"maxLength": 4\}'
-							maxConditions="1"
-						/>
-
-						<!-- Filial -->
-						<mdc:FilterField
-							id="Main_FiltroID--filter--branch"
-							propertyKey="branch"
-							operators="EQ"
-							label="Filial"
-							dataType="sap.ui.model.type.String"
-                            dataTypeConstraints='\{"maxLength": 4\}'
-                            maxConditions="1"
-						/>
-						
-						<!-- Data Referencia -->
-						<mdc:FilterField
-							id="Main_FiltroID--filter--pstdatI"
-							propertyKey="pstdat"
-							operators="EQ,BT,GT,LT,SPECIFICMONTH,DATETOYEAR,THISMONTH,LASTMONTH"
-							label="Data Referência"
-							dataType="sap.ui.model.type.Date"
-                            dataTypeConstraints='\{"maxLength": 4\}'
-                            maxConditions="1"
-						/>
-						<!-- Docnum -->
-						<mdc:FilterField
-							id="Main_docnumID"
-							propertyKey="docnum"
-							operators="EQ"
-							label="Numero do Documento (Docnum)"
-							dataType="sap.ui.model.type.String"
+					<mdc:FilterBar
+						id="Main_FiltroID"
+						filtersChanged=".onFiltersChanged"
+						showGoButton="false"
+					>
+					
+						<mdc:filterItems>
+							<!-- Docnum -->
+							<mdc:FilterField
+								id="Main_FiltroID--filter--bukrs"
+								propertyKey="CompanyCode"
+								operators="EQ"
+								label="Empresa"
+								dataType="sap.ui.model.type.String"
+								dataTypeConstraints='\{"maxLength": 4\}'
+								maxConditions="1"
+								required="true"
 							/>
-			
-					</mdc:filterItems>
-				</mdc:FilterBar>
 
-            </VBox>
-        
-        </Page>
+							<!-- Filial -->
+							<mdc:FilterField
+								id="Main_FiltroID--filter--branch"
+								propertyKey="BusinessPlace"
+								operators="EQ"
+								label="Filial"
+								dataType="sap.ui.model.type.String"
+								dataTypeConstraints='\{"maxLength": 4\}'
+								maxConditions="1"
+							/>
+							
+							<!-- Data Referencia -->
+							<mdc:FilterField
+								id="Main_FiltroID--filter--pstdatI"
+								propertyKey="BR_NFAuthenticationDate"
+								operators="EQ,BT,SPECIFICMONTHINYEAR,THISMONTH,LASTMONTH"
+								label="Data Referência"
+								dataType="sap.ui.model.type.Date"
+								dataTypeConstraints='{"maxLength": 4}'
+								maxConditions="1"
+							/>
+							<!-- Docnum -->
+							<mdc:FilterField
+								id="Main_docnumID"
+								propertyKey="BR_NotaFiscal"
+								label="Nº do Documento"
+								dataType="sap.ui.model.type.String"
+								dataTypeConstraints='{"maxLength": 10}'
+							/>
+
+							<!-- Tipo de Seleção de Data -->			
+						</mdc:filterItems>
+					</mdc:FilterBar>
+
+					<mdc:FilterField id="Main_FiltroID--filter--dt_competencia"
+						propertyKey="DT_EXERCIO"
+						operators="EQ">
+						<custom:MultselectOptions id="customFilterbar--filter--status-SB">
+							<custom:items>
+								<SegmentedButtonItem id="Main_FiltroID--filter--status-SB-docdat" text="Data do Documento" key="docdat"/>
+								<SegmentedButtonItem id="Main_FiltroID--filter--status-SB-pstdat" text="Data do Lançamento" key="pstdat"/>
+								<SegmentedButtonItem id="Main_FiltroID--filter--status-SB-credat" text="Data do Criação" key="credat"/>
+							</custom:items>
+						</custom:MultselectOptions>
+					</mdc:FilterField>
+
+					<HBox justifyContent="Center">
+						<Button icon="sap-icon://task" press=".runFilterPress"/>
+						<VBox width="10px"></VBox>
+						<Button icon="sap-icon://compare-2" text="Verificar"/>
+						<VBox width="10px"></VBox>
+						<Button icon="sap-icon://save"/>
+						<VBox width="10px"></VBox>
+						<Button icon="sap-icon://decline"/>
+					</HBox>
+				</VBox>
+			</HBox>
+		</content>
+        </Page>	
     </App>
 </mvc:View>

@@ -6,7 +6,7 @@ import FilterBar from "sap/ui/mdc/FilterBar"
 import Log from "sap/base/Log";
 
 
-import { dinamicTable } from "dhconsulting/fiori/model/model"
+import dinamicTable from "dhconsulting/fiori/customComponents/dinamicTable"
 
 // import FilterBar from "sap/ui/mdc/FilterBar"
 
@@ -20,14 +20,15 @@ import { dinamicTable } from "dhconsulting/fiori/model/model"
 */
 
 export default class TableResult extends Controller{
-    public onInit(): void {
+    public onInit(): void{}
+    public onAfterRendering (): void {
         const oModelFilter = this.getOwnerComponent()!.getModel("TABLE_RESULT")
         if(oModelFilter){
             console.log(( oModelFilter as any).getData());
             
             const oHbox =(this.getView()?.byId("replace_at_tableResult") as any)
             oHbox.addItem(
-                dinamicTable(
+                new dinamicTable().init(
                     ( oModelFilter as any).getData(), 
                     "TABLE_RESULT",
                     "/value/"
@@ -37,18 +38,4 @@ export default class TableResult extends Controller{
         }
         
     };
-   /* public onFiltersChanged(oEvent: Event): void{
-        // const oConditions = (this.getView()!.byId("Main_FiltroID") as FilterBar).getConditions();
-    };
-    public onBtnSearchPress(): void{
-        debugger
-        // Faz uma busca
-        // const oModel_Nfe = new ODataModel({
-        //     {
-        //     serviceUrl: "http://local.dhconsulting.com.br:3000/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
-        //     headers: {
-        //         "Authorization": (this.getView()?.getModel("loginInputData") as Model),
-        //     }
-        // })
-    }*/
 };

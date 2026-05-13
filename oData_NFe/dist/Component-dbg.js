@@ -1,4 +1,4 @@
-sap.ui.define(["sap/ui/core/UIComponent", "dhconsulting/fiori/model/model"], function (UIComponent, __dhconsulting_fiori_model_model) {
+sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/model/resource/ResourceModel", "dhconsulting/fiori/model/model"], function (UIComponent, ResourceModel, __dhconsulting_fiori_model_model) {
   "use strict";
 
   // Import Model Device
@@ -13,18 +13,15 @@ sap.ui.define(["sap/ui/core/UIComponent", "dhconsulting/fiori/model/model"], fun
     },
     init: function _init() {
       UIComponent.prototype.init.call(this);
-
-      // // Autenticação (Temporario)
-      // this.setModel(new JSONModel({
-      //     serviceUrl: "https://sap.dhconsulting.com.br/sap/opu/odata/sap/API_LOGBR_NOTAFISCAL_SRV/",
-      //     serviceUrlParams:{
-      //         Authorization: "Basic Sk9BQjpEaDIwMjZAQEBA"                
-      //     }
-      // }), "auth_nfe")
-
       createDeviceModel();
       const oRoute = this.getRouter();
       oRoute.initialize();
+
+      // Set Languade
+      const i18nModel = new ResourceModel({
+        bundleName: "dhconsulting.fiori.i18n.i18n"
+      });
+      this.setModel(i18nModel, "i18n");
 
       // rota inicial
       oRoute.navTo("RouteMainPage");
