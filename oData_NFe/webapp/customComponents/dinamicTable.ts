@@ -7,10 +7,9 @@ import Input from "sap/m/Input";
 import Button from "sap/m/Button";
 import ToolbarSpacer from "sap/m/ToolbarSpacer";
 import Event from "sap/ui/base/Event";
-import deepExtend from 'sap/base/util/deepExtend';
-import UIComponent from "sap/ui/core/UIComponent";
 import CheckBox from "sap/m/CheckBox";
 import { InputType } from "sap/m/library";
+import Model from "sap/ui/model/Model";
 
 type tyDataResponseValue = [{
     [key: string | string]: string | number | boolean | Date | null
@@ -31,14 +30,14 @@ class clDinamicTable{
      * Controle interno de dados
      */
     sNamespace: string;
-    oDataStorage : tyDataResponse | {}  = {};
-    oBkDataStorage : object
+    sPath: string;
+    oDataStorage : Model;
+    rgBkDataStorage : []
 
 
     destroy(){
         this.sNamespace = "";
-        this.oDataStorage = {};
-        this.oBkDataStorage = {};
+        this.rgBkDataStorage = [];
     }
 
     /**
@@ -49,20 +48,63 @@ class clDinamicTable{
         // Evento de click para edição databela
         const oObjectRef = clDinamicTable._oObject;
         // Backup
-        if(!( oObjectRef.oDataStorage as tyDataResponse ).value.length){
+        if(!oObjectRef.oDataStorage.getProperty(oObjectRef.sPath).length){
             return;
         }
-        oObjectRef.oBkDataStorage = deepExtend([], ( oObjectRef.oDataStorage as tyDataResponse ).value);
+        oObjectRef.rgBkDataStorage = structuredClone(oObjectRef.oDataStorage.getProperty(oObjectRef.sPath))
         oObjectRef.oTableGrid.destroyColumns();
         oObjectRef.makeColumns(true)
+
+        // esconde botões padrão
+        oObjectRef._oBtnEdit.setVisible(false);
+        oObjectRef._oBtnExcel.setVisible(false);
+
+        // Botões que irão aparecer
+        oObjectRef._oBtnConfirm.setVisible(true);
+        oObjectRef._oBtnCancel.setVisible(true);
     }
 
-    _excelBtn(oEvent: Event){
+    async _excelBtn(oEvent: Event){
+        if(typeof XLSX == "undefined"){
+            // @ts-ignore
+            await import("dhconsulting/fiori/customComponents/lib/xlsx.min");
+        }
 
+        const oXlsx = (XLSX as any ) ;        
+        const oObjectRef = clDinamicTable._oObject;
+
+        const workbook = oXlsx.utils.book_new();
+        const worksheet = oXlsx.utils.json_to_sheet(oObjectRef.oDataStorage.getProperty(oObjectRef.sPath));
+        oXlsx.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+        oXlsx.writeFile(workbook, `${new Date()}.xlsx`);
+    }
+    _restoreToDisplay(){
+        this.makeColumns(false)
+        
+        // devolve os botões padrão
+        this._oBtnEdit.setVisible(true);
+        this._oBtnExcel.setVisible(true);
+
+        // esconde novamento os Botões que irão aparecer
+        this._oBtnConfirm.setVisible(false);
+        this._oBtnCancel.setVisible(false);
+    }
+
+    _saveTable(oEvent: Event){
+        // Evento de click para Confirmação da Edição
+       clDinamicTable._oObject._restoreToDisplay()
     }
 
     _cancelTable(oEvent: Event){
-        // Evento de click para edição databela
+        // Evento de click para Cancelamento da Edição
+        clDinamicTable._oObject._restoreToDisplay();
+        debugger;
+        // @ts-ignore
+        this.getModel("TABLE_RESULT").setProperty(
+            clDinamicTable._oObject.sPath, 
+            structuredClone(clDinamicTable._oObject.rgBkDataStorage)
+        )
+        clDinamicTable._oObject.rgBkDataStorage = []
     }
 
     /**
@@ -86,14 +128,14 @@ class clDinamicTable{
             icon: "sap-icon://excel-attachment",
             id: "btnExcel",
             tooltip: "Gerar Excel",
-            //press: this._excelBtn
+            press: this._excelBtn
         });
 
         this._oBtnConfirm = new Button('cancelSave', {
             tooltip: "Save",
             icon: "sap-icon://save",
             type: "Accept",
-            // press: this._saveTable,
+            press: this._saveTable,
             visible: false
         });
 
@@ -101,13 +143,12 @@ class clDinamicTable{
             tooltip: "Cancel",
             icon: "sap-icon://decline",
             type: "Reject",
-            // press: this._cancelTable,
+            press: this._cancelTable,
             visible: false
         }) 
 
         return [
             new ToolbarSpacer(),
-            new Input({ width: "10rem" }),
             this._oBtnEdit,
             this._oBtnExcel,
 
@@ -121,12 +162,13 @@ class clDinamicTable{
      * Evento principal de criação da tabela dinamica
      */
 
-    init(oData: tyDataResponse, namespace="TABLE_RESULT", path="/value/"){
+    init(oData: Model, namespace="TABLE_RESULT", path="/value/"){
         /* monta de forma dinamica uma tabela do tipo Grid */
 
         // Armazena dados para controle de edição
-        this.oDataStorage = oData || {};
+        this.oDataStorage = oData;
         this.sNamespace = namespace;
+        this.sPath = path;
         
         this.oTableGrid = new Table("", {
             rows: {
@@ -144,7 +186,7 @@ class clDinamicTable{
             content: (this.toolBarIncluse()),
         }), 0);
 
-        if((this.oDataStorage as tyDataResponse)["value"]){
+        if(this.oDataStorage.getProperty(path)){
             this.makeColumns()
         }
 
@@ -188,17 +230,18 @@ class clDinamicTable{
            
         }
 
-        const rgColumns = Object.keys((this.oDataStorage as tyDataResponse)["value"][0])
+        const rgColumns = Object.keys((this.oDataStorage as Model).getProperty(this.sPath)[0])
         for(let i=0; i<rgColumns.length; i++){
             const sKeyColumn = rgColumns[i]
-            const anyValue = (this.oDataStorage as tyDataResponse)["value"][0][sKeyColumn]
+            const anyValue = (this.oDataStorage).getProperty(this.sPath)[0][sKeyColumn]
             const sType = (anyValue != null) ? anyValue!.constructor.name : "String"
 
             this.oTableGrid.insertColumn(new Column({
             autoResizable: true,
                 width: "8rem",
                 label: new Label({ 
-                    text: `{i18n>${sKeyColumn}}`
+                    // text: `{i18n>${sKeyColumn}}`
+                    text: `${sKeyColumn}`
                 }),
                 template: checkPerType(sType, sKeyColumn,editable)
             }

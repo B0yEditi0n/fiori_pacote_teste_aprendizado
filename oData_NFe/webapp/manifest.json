@@ -6,7 +6,7 @@
         "type": "application",
         "dataSources": {
             "nfeService":{
-                "uri": "http://local.dhconsulting.com.br:3000/sap/opu/odata4/sap/zjsl_b_nfdoc/srvd_a2x/sap/zjsl_s_nfdoc/0001/",
+                "uri": "http://192.168.15.244:3892/sap/opu/odata4/sap/zjsl_b_nfdoc/srvd_a2x/sap/zjsl_s_nfdoc/0001/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0",

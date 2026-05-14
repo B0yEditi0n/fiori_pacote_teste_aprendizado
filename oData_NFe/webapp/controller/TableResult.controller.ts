@@ -23,13 +23,11 @@ export default class TableResult extends Controller{
     public onInit(): void{}
     public onAfterRendering (): void {
         const oModelFilter = this.getOwnerComponent()!.getModel("TABLE_RESULT")
-        if(oModelFilter){
-            console.log(( oModelFilter as any).getData());
-            
+        if(oModelFilter){            
             const oHbox =(this.getView()?.byId("replace_at_tableResult") as any)
             oHbox.addItem(
                 new dinamicTable().init(
-                    ( oModelFilter as any).getData(), 
+                    ( oModelFilter as any), 
                     "TABLE_RESULT",
                     "/value/"
                 )

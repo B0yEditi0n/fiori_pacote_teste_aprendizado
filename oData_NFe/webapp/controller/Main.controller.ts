@@ -12,12 +12,6 @@ import Filter from "sap/ui/model/Filter";
 import FilterField from "sap/ui/mdc/FilterField";
 import FilterOperator from "sap/ui/model/FilterOperator";
 
-// data get
-import Context from "sap/ui/model/Context";
-import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
-import ODataContextBinding from "sap/ui/model/odata/v4/ODataContextBinding";
-import ODataPropertyBinding from "sap/ui/model/odata/v4/ODataPropertyBinding";
-
 import { getFilterData } from "dhconsulting/fiori/model/model"
 
 export default class Main extends Controller{

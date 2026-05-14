@@ -1,2 +1,0 @@
-sap.ui.define(["sap/ui/core/UIComponent","sap/ui/model/resource/ResourceModel","dhconsulting/fiori/model/model"],function(e,n,i){"use strict";const t=i["createDeviceModel"];const o=e.extend("dhconsulting.fiori.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init:function i(){e.prototype.init.call(this);t();const o=this.getRouter();o.initialize();const s=new n({bundleName:"dhconsulting.fiori.i18n.i18n"});this.setModel(s,"i18n");o.navTo("RouteMainPage")}});return o});
-//# sourceMappingURL=Component.js.map

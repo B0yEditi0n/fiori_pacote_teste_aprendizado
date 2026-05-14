@@ -1,10 +1,7 @@
-import Control from "sap/ui/core/Control";
 import UIComponent from "sap/ui/core/UIComponent";
-import JSONModel from "sap/ui/model/json/JSONModel";
 
 // Translate
 import ResourceModel from "sap/ui/model/resource/ResourceModel";
-import ResourceBundle from "sap/base/i18n/ResourceBundle";
 
 // Import Model Device
 import { createDeviceModel } from "dhconsulting/fiori/model/model"

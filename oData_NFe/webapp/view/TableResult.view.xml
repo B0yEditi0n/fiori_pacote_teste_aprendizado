@@ -67,4 +67,4 @@
 			</VBox>
 		</f:content>	
 	</f:DynamicPage>
-</mvc:View>
+</mvc:View> 
