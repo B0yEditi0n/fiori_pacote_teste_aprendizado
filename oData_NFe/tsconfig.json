@@ -11,5 +11,9 @@
             "dhconsulting/fiori/*": ["./webapp/*"]
         }
     },
-    "include": ["./webapp/**/*"]
+    "include": ["./webapp/**/*"],
+    "exclude": [
+        "node_modules",
+        "./webapp/custom/lib/**/*",
+    ]
 }

@@ -6,7 +6,7 @@
     xmlns:l="sap.ui.layout"
 
 	xmlns:mdc="sap.ui.mdc"
-	xmlns:custom="dhconsulting.fiori.customComponents"
+	xmlns:custom="dhconsulting.fiori.custom"
     >
 
 	<App id="MainID">

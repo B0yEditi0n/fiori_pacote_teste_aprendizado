@@ -1,0 +1,14 @@
+NFE:
+  namespace: NFE
+  version: 4.0
+  urlprfix: http://192.168.15.244:3892/sap/opu/odata4/sap/zjsl_b_nfdoc/srvd_a2x/sap/zjsl_s_nfdoc/0001/
+  POST:
+    PATH: Doc
+    HTTP_HEADER: {}
+    DEFAULT_KEY: 
+    - BR_NotaFiscal
+  GET:
+    PATH: Doc
+    HTTP_HEADER: {}
+    DEFAULT_KEY: 
+    - BR_NotaFiscal

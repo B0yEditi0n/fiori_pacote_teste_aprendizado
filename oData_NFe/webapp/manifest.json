@@ -10,7 +10,9 @@
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0",
-                    "localUri": "/"
+                    "localUri": "/",
+                    "csrf": true,
+                    "csrfInBatch": true
                 }                
             }
         }
@@ -52,7 +54,13 @@
             "routes":[
                 {
                     "name": "RouterTableResult",
-                    "pattern": "SelectTarget",
+                    "pattern": "displayData/{modulo}",
+                    "target": "TargetTableResult"
+
+                },
+                {
+                    "name": "RouterTableEdit",
+                    "pattern": "EditData",
                     "target": "TargetTableResult"
                 },
                 {

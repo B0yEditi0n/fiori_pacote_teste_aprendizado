@@ -5,7 +5,7 @@ import ResourceModel from "sap/ui/model/resource/ResourceModel";
 
 // Import Model Device
 import { createDeviceModel } from "dhconsulting/fiori/model/model"
-
+ 
 /**
  * @namespace dhconsulting.fiori
  */

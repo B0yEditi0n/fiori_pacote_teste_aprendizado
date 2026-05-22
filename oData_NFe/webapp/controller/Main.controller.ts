@@ -1,28 +1,20 @@
 import Controller from "sap/ui/core/mvc/Controller";
 import MessageBox from "sap/m/MessageBox";
 // import Input from "sap/m/Input";
-import Model from "sap/ui/model/Model";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Event from "sap/ui/base/Event";
 import UIComponent from "sap/ui/core/UIComponent";
-import ODataModel from "sap/ui/model/odata/v4/ODataModel"
 
 import FilterBar from "sap/ui/mdc/FilterBar"
 import Filter from "sap/ui/model/Filter";
-import FilterField from "sap/ui/mdc/FilterField";
-import FilterOperator from "sap/ui/model/FilterOperator";
 
-import { getFilterData } from "dhconsulting/fiori/model/model"
+import { getFilterData } from 'dhconsulting/fiori/model/model';
 
 export default class Main extends Controller{
-    onInit() { };
+    onInit() {};
 
     onPressLogin(oEvent: Event){
-        const oModelSapUi5 = this.getView()?.getModel("NFe_API")
-        
-        
-        // UIComponent.getRouterFor(this).navTo("RouterTableResult")
-        
+        // const oModelSapUi5 = this.getView()?.getModel("NFe_API")
     }
     runFilterPress(oEvent: Event){
         if(!(this.getView()!.byId("Main_FiltroID--filter--bukrs") as FilterBar)
@@ -40,7 +32,7 @@ export default class Main extends Controller{
         for(let i = 0; i < rgConditions.length; i++){            
             const oCond = rgConditions[i];
             const c: any = rgConditions[i].getConditions();
-            for(let j=0; j< c.length; j++){
+            for(let j=0;j<c.length; j++){
                  sParansCond.push(
                     new Filter({
                         path: oCond.getPropertyKey(),
@@ -58,36 +50,18 @@ export default class Main extends Controller{
             }
            
         }
+
+        const sModulo = "NFE";
         
-        const oData = this.getView()?.getModel("NFe_API") as ODataModel;
-        // const oContextBinding = oData.bindContext("/Doc", /*oContext*/ undefined, {$$updateGroupId : "mainFilterNfe"});
+        //const oData = this.getView()?.getModel("NFe_API") as ODataModel;
 
-        // // const oBindList = oData.bindList("Note", oContextBinding.getBoundContext());
-        // const oBindList = oData.bindList(
-        //     '/Doc',                                     // PATH
-        //     new Context(oData, oData.getServiceUrl()),  // Context
-        //     [],                                         // Sort
-        //     sParansCond,                                // Filters
-        //     // Parans
-        //     {
-        //         // Não tem documentação (achamos debugando)
-        //         // tem que ser server pois ele valida, mas pede você passar
-        //         "$$operationMode": "Server"   
-        //     }
-        // )
-
-        //
-        // TESTE DO FETCH
-        //
-
-        const oDataFetchApi = getFilterData(oData.getServiceUrl(), rgCondFilter).then(
+        const oDataFetchApi = getFilterData(sModulo, rgCondFilter).then(
             (data: any)=>{
-                this.getOwnerComponent()?.setModel(new JSONModel(data), "TABLE_RESULT");
-                UIComponent.getRouterFor(this).navTo("RouterTableResult")
+                this.getOwnerComponent()?.setModel(new JSONModel(data), sModulo);
+                UIComponent.getRouterFor(this).navTo("RouterTableResult", { modulo: sModulo })
             }
         )        
-        // 
-        
+                
     };
 
 };

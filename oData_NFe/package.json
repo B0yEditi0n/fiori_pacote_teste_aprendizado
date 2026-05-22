@@ -9,9 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@sapui5/ts-types-esm": "^1.147.2",
+    "@types/bun": "latest",
     "typescript": "^6.0.3",
     "ui5-middleware-livereload": "^3.3.0",
     "ui5-middleware-serveframework": "^3.8.0",
@@ -21,9 +22,12 @@
     "@sapui5/ts-types-esm": "^1.147.2",
     "@types/openui5": "^1.147.0",
     "dotenv": "^17.4.2",
+    "js-yaml": "^4.1.1",
     "typescript": "^5.4.0",
     "ui5-middleware-livereload": "^3.3.0",
     "ui5-middleware-serveframework": "^3.8.0",
-    "ui5-middleware-simpleproxy": "^3.7.0"
-  }
+    "ui5-middleware-simpleproxy": "^3.7.0",
+    "yaml": "^2.9.0"
+  },
+  "private": true
 }
